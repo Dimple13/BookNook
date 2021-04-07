@@ -51,7 +51,8 @@ if(isset($_POST['submit']))
         }
         else
         {
-          $query ="INSERT INTO users VALUES ('$username','$password')";
+          $date=date("Y/m/d");
+          $query ="INSERT INTO users VALUES ('$username','$password','$date')";
           $result=mysqli_query($con,$query);
           print'
                 <script type="text/javascript">
@@ -191,8 +192,10 @@ if(isset($_POST['submit']))
       <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
           <div>
               <form role="search" method="POST" action="Result.php">
-                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category" >
+                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;display:inline-block;margin-right:0px;margin-left:120px" placeholder="Search for a Book , Author Or Category" >
+                  <input type="submit" class="form-control" style="display: inline-block; border:none; background-repeat:no-repeat;background-size:100% 100%;width:5%;height:35px">
               </form>
+
           </div>
       </div>
 

@@ -60,13 +60,15 @@ if(!isset($_SESSION['user']))
     </nav>
 
     <div id="top" >
-        <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
-            <div>
-                <form role="search" action="Result.php" method="post">
-                    <input type="text" name="keyword" class="form-control" placeholder="Search for a Book , Author Or Category" style="width:80%;margin:20px 10% 20px 10%;">
-                </form>
-            </div>
-        </div>
+    <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
+          <div>
+              <form role="search" method="POST" action="Result.php">
+                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;display:inline-block;margin-right:0px;margin-left:120px" placeholder="Search for a Book , Author Or Category" >
+                  <input type="submit" class="form-control" style="display: inline-block; border:none; background-repeat:no-repeat;background-size:100% 100%;width:5%;height:20%">
+              </form>
+
+          </div>
+      </div>
 
     <?php
     include "dbconnect.php";

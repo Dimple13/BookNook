@@ -17,7 +17,8 @@ if(isset($_POST['submit']))
         }
         else
         {
-          $query ="INSERT INTO users VALUES ('$username','$password')";
+          $date=date("Y/m/d");
+          $query ="INSERT INTO users VALUES ('$username','$password','$date')";
           $result=mysqli_query($con,$query);
           header("Location: index.php?register=" . "Successfully Registered!!");
         }

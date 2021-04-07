@@ -8,6 +8,22 @@
 <?php
         if(isset($_GET['place']))
                  {  
+                    $sql = "SELECT * FROM cart where Customer='$customer'";
+                    
+                    $query = mysqli_query($con, $sql);
+                    if($query->num_rows>0) {
+                        while($row = mysqli_fetch_array($query, MYSQLI_NUM)){
+                            $sql1="SELECT * from products where PID='$row[1]'";
+                            $res = mysqli_query($con, $sql1);
+                            $row1 = mysqli_fetch_array($res,MYSQLI_NUM);
+                            $res1 = $row1[6];
+                            $update=$res1-$row[2];
+                            $sql2="UPDATE products SET Available=$update where PID='$row[1]'";
+                            $res1 = mysqli_query($con, $sql2);
+                            $x ="INSERT INTO orders VALUES ('$row[0]','$row[1]',$row[2])";
+                            $result=mysqli_query($con,$x);
+                        }
+                    }
                     $query="DELETE FROM cart where Customer='$customer'";
                     $result=mysqli_query($con,$query);
                  ?>
@@ -160,11 +176,13 @@
     </div><!-- /.container-fluid -->
   </nav>
   <div id="top" >
-      <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
+  <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
           <div>
               <form role="search" method="POST" action="Result.php">
-                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category">
+                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;display:inline-block;margin-right:0px;margin-left:120px" placeholder="Search for a Book , Author Or Category" >
+                  <input type="submit" class="form-control" style="display: inline-block; border:none; background-repeat:no-repeat;background-size:100% 100%;width:5%;height:35px">
               </form>
+
           </div>
       </div>
 
